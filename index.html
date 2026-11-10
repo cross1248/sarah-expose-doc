@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sarah exposed</title>
+<style>
+  :root {
+    --bg: #05070a;
+    --panel: #0b0f14;
+    --line: #1c2733;
+    --text: #c8f7d4;
+    --muted: #5f7a6c;
+    --accent: #39ff8f;
+    --accent-dim: #1f8f52;
+    --icon: #7b7fff;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background:
+      repeating-linear-gradient(0deg, rgba(57,255,143,0.025) 0px, rgba(57,255,143,0.025) 1px, transparent 1px, transparent 3px),
+      radial-gradient(ellipse at 50% 20%, #0c1410 0%, var(--bg) 60%);
+    color: var(--text);
+    font-family: "JetBrains Mono", "Fira Code", Consolas, "SFMono-Regular", monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  main { width: 100%; max-width: 460px; }
+  .prompt {
+    color: var(--accent-dim);
+    font-size: .82rem;
+    margin: 0 0 10px;
+    letter-spacing: .02em;
+  }
+  .prompt .cursor {
+    display: inline-block;
+    width: 7px;
+    height: 1em;
+    background: var(--accent);
+    vertical-align: -2px;
+    margin-left: 2px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .file {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .file:hover, .file:focus-visible {
+    border-color: var(--accent-dim);
+    box-shadow: 0 0 0 1px var(--accent-dim), 0 0 18px -4px rgba(57,255,143,0.35);
+    outline: none;
+  }
+  .icon { flex: none; width: 34px; height: 34px; color: var(--icon); }
+  .meta { min-width: 0; }
+  .fname {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .fsize { font-size: .82rem; color: var(--muted); margin: 0; }
+
+  .note {
+    margin: 18px 4px 0;
+    color: var(--muted);
+    font-size: .85rem;
+    line-height: 1.6;
+  }
+  .note::before { content: "# "; color: var(--accent-dim); }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #e9efe9;
+      --panel: #ffffff;
+      --line: #c3d2c6;
+      --text: #0c3d22;
+      --muted: #5f7a6c;
+      --accent: #1f8f52;
+      --accent-dim: #2fae68;
+      --icon: #5558d8;
+      color-scheme: light;
+    }
+    body {
+      background:
+        repeating-linear-gradient(0deg, rgba(31,143,82,0.03) 0px, rgba(31,143,82,0.03) 1px, transparent 1px, transparent 3px),
+        var(--bg);
+    }
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="prompt">root@system:~$ ls -la ./incoming<span class="cursor"></span></p>
+
+  <!-- To use your own file: set href below to its path or URL, and update the download name + size text. -->
+  <a class="file" id="download-btn" href="EXPOSING SARAH BY KATIE.docx" download="EXPOSING SARAH BY KATIE.docx">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+      <path d="M14 3v5h5"/>
+      <line x1="9" y1="13" x2="15" y2="13"/>
+      <line x1="9" y1="17" x2="13" y2="17"/>
+    </svg>
+    <div class="meta">
+      <p class="fname" id="file-name">EXPOSING SARAH BY KATIE.docx</p>
+      <p class="fsize" id="file-size">10.98 MB</p>
+    </div>
+  </a>
+
+  <p class="note">sarahs expose document, made by katie herself</p>
+</main>
+
+<script>
+  // Placeholder file generated in the browser so the link works out of the box.
+  // Delete this script and set #download-btn's href to a real file when you have one.
+  (function () {
+    var btn = document.getElementById('download-btn');
+    var content = 'sarahs expose document,\nmade by katie herself.\n';
+    var blob = new Blob([content], { type: 'text/plain' });
+    btn.href = URL.createObjectURL(blob);
+  })();
+</script>
+</body>
+</html>
